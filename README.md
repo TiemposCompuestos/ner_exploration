@@ -26,6 +26,7 @@ Las carpetas contienen lo siguiente:
 El Makefile sirve para generar datos para etiquetar a partir de datos crudos y datos para entrenar a partir de datos etiquetados.
 - `make` (o `make generate_to_tag`) genera los datos para etiquetar a partir de `data/raw/reviews.json`
 - `make generate_to_train` genera los datos de entrenamiento de NER y embeddings a partir del contenido de `data/`.
+- **IMPORTANTE**: dado que Github no permite archivos grandes, las reseñas crudas están separadas en seis archivos que hay que unir con el comando `make join_reviews` antes de ejecutar los demás.
 
 
 ## Introduction and contents
@@ -53,3 +54,4 @@ The folders have the following contents:
 There's a Makefile in order to generate data for tagging from raw data and training data from tagged data.
 - `make` (or `make generate_to_tag`) generates tagging data from `data/raw/reviews.json`
 - `make generate_to_train` generates training data for NER and embeddings from the contents of `data/`.
+- - **IMPORTANT**: since Github won't allow large files, the raw reviews are split across six files to be joined by the command `make join_reviews` before running anything else.
