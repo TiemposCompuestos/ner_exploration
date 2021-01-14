@@ -52,7 +52,9 @@ def bilou_to_flair(bilou_dict):
     for source in bilou_frame['text'].unique():
         text = bilou_frame.loc[bilou_frame.text == source][['token', 'tag']].values
         for row in text:
-            values.append(' '.join(row))
+            token, tag = row
+            newtag = tag.replace('L-', 'E-').replace('U-', 'S-')
+            values.append(' '.join([token, newtag]))
         values.append('')
     return '\n'.join(values[:-1])
 
