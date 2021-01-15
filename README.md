@@ -21,14 +21,25 @@ Las carpetas contienen lo siguiente:
 - output/: Contiene imágenes obtenidas de los scripts que describen distintos aspectos del corpus de reseñas.
 - scripts/: Tiene algunas piezas de código necesarias para generar la mayoría del contenido de las carpetas data/ y output/.
 - utils/: Scripts de bash para preprocesar datos.
-- notebooks/: Notebooks con el código para entrenar y evaluar NER y embeddings.
+- notebooks/: Notebooks con el código para entrenar y evaluar NER y embeddings. Los notebooks **no van a funcionar** si se ejecutan tal cual están, sino que tienen que estar en la misma ubicación que la carpeta `data/` (o corregir las rutas de archivo dentro de la notabook) y que el script `format_tagged_sentences.py`.
 
 El Makefile sirve para generar datos para etiquetar a partir de datos crudos y datos para entrenar a partir de datos etiquetados.
 - `make` (o `make generate_to_tag`) genera los datos para etiquetar a partir de `data/raw/reviews.json`
 - `make generate_to_train` genera los datos de entrenamiento de NER y embeddings a partir del contenido de `data/`.
 - **IMPORTANTE**: dado que Github no permite archivos grandes, las reseñas crudas están separadas en seis archivos que hay que unir con el comando `make join_reviews` antes de ejecutar los demás.
 
+### Por hacer:
 
+- Agregar más datos etiquetados.
+- Remover los datos crudos y reubicar la funcionalidad para su preprocesamiento.
+- Extraer y abstraer el código de las notebooks.
+- Testear.
+- Armar archivo `setup.py`.
+- _Escribir explicación tarea NER_
+- _Escribir explicación CRF_
+- _Escribir explicación Flair_
+
+<br>
 ## Introduction and contents
 
 Most pretrained named entity recognition models recognize a standard set of four types, PER (person), ORG (organization), LOC (location) and MISC (miscellaneous), with some degree of variation, but without deviating too much from these basic types. Because of this, whenever a model that cant recognize some other set of classes is needed, it becomes necessary to train new model with custom data.
@@ -49,9 +60,20 @@ The folders have the following contents:
 - output/: Images obtained from scripts/ describing different aspects of the review corpus.
 - scripts/: Code snippets required to generate most of the content in`data/` and `output/`.
 - utils/: Bash scripts for data preprocessing.
-- notebooks/: Notebooks with code for training and evaluating NER and embeddings.
+- notebooks/: Notebooks with code for training and evaluating NER and embeddings. **They won't run as-is**, they need to be in the same location as the `data/` directory (otherwise you should change the paths in the notebook), and as the `format_tagged_sentences.py` script.
 
 There's a Makefile in order to generate data for tagging from raw data and training data from tagged data.
 - `make` (or `make generate_to_tag`) generates tagging data from `data/raw/reviews.json`
 - `make generate_to_train` generates training data for NER and embeddings from the contents of `data/`.
-- - **IMPORTANT**: since Github won't allow large files, the raw reviews are split across six files to be joined by the command `make join_reviews` before running anything else.
+- **IMPORTANT**: since Github won't allow large files, the raw reviews are split across six files to be joined by the command `make join_reviews` before running anything else.
+
+### To do:
+
+- Add more tagged data.
+- Remove raw data and relocate code for raw data preprocessing.
+- Extract and abstract notebook code.
+- Test.
+- Write `setup.py`.
+- _Write up NER task explanation._
+- _Write up CRF explanation._
+- _Write up Flair explanation._
